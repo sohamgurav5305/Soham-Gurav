@@ -1,18 +1,21 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
     num: "01",
-    tags: "FULLSTACK • MERN • AGRITECH",
-    title: "Agronexis",
-    description: "A smart agriculture platform that helps farmers manage crops, monitor farm resources, and access agricultural insights through an intuitive web dashboard.",
-    highlights: "Farmer Dashboard • Crop Management • Data Insights",
-    tech: ["React", "Node.js", "MongoDB", "JavaScript"],
+    tags: "WEB • PHP • FULLSTACK",
+    slug: "foodshare",
+    title: "FoodShare",
+    description: "A dynamic food-sharing website connecting donors with NGOs. Features donor registration, food listing, and request management with MySQL backend.",
+    highlights: "Donor Registration • Food Listing • Request Management",
+    tech: ["PHP", "MySQL", "JavaScript", "HTML/CSS"],
     year: "2025",
   },
   {
     num: "02",
     tags: "ML • DATA SCIENCE • PREDICTION",
+    slug: "luxury-watch-price-prediction",
     title: "Luxury Watch Price Prediction",
     description: "Machine learning model predicting luxury watch prices based on brand, material, condition, and year. Trained with Linear Regression, Random Forest, and XGBoost.",
     highlights: "EDA • Model Comparison • Accuracy Metrics",
@@ -55,9 +58,11 @@ const Projects = () => {
                 <span className="text-xs tracking-[0.2em] text-primary uppercase">{project.tags}</span>
               </div>
 
-              <h3 className="text-3xl md:text-5xl font-display italic mb-4 group-hover:text-primary transition-colors duration-500">
-                {project.title}
-              </h3>
+              <Link to={`/project/${project.slug}`}>
+                <h3 className="text-3xl md:text-5xl font-display italic mb-4 group-hover:text-primary transition-colors duration-500 cursor-pointer">
+                  {project.title}
+                </h3>
+              </Link>
 
               <p className="text-muted-foreground leading-relaxed max-w-2xl mb-6">
                 {project.description}
