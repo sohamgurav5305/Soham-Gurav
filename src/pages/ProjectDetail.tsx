@@ -41,6 +41,41 @@ const projects = [
       "Data visualization with Matplotlib and Seaborn",
     ],
   },
+  {
+    slug: "serene-meditation-app",
+    num: "03",
+    tags: "UX • UI • CASE STUDY",
+    title: "Serene — Meditation App",
+    description: "A complete UX/UI case study for a mindfulness app focused on reducing stress through guided meditations, sleep stories, and mood tracking.",
+    highlights: ["User Research", "Wireframes", "High-Fidelity Prototype", "Usability Testing"],
+    tech: ["Figma", "Adobe XD", "Miro", "Maze"],
+    year: "2025",
+    details: "Serene is an end-to-end UX/UI case study designed to help young professionals manage stress and improve sleep quality through mindfulness. The project began with extensive user research — including surveys with 40+ participants and 8 in-depth interviews — to uncover the emotional barriers users face when starting a meditation practice. Findings revealed that overwhelming content libraries and rigid streak systems caused users to abandon existing apps. Serene addresses this with a calming, minimal interface, a personalized onboarding flow, mood-based session recommendations, and a gentle 'no-pressure' progress system that celebrates consistency without guilt.",
+    problem: "70% of meditation app users churn within the first week due to choice overload, intimidating UI, and shame-based streak mechanics that punish missed days.",
+    solution: "A warm, minimal interface with mood-driven recommendations, a flexible progress system, and bite-sized 3-minute sessions designed for busy lifestyles.",
+    process: [
+      "Discovery — Competitive audit of Calm, Headspace, and Insight Timer",
+      "Research — 40+ survey responses, 8 user interviews, affinity mapping",
+      "Define — User personas, journey maps, and problem statement",
+      "Ideate — Crazy 8s, user flows, and information architecture",
+      "Design — Low-fi wireframes → High-fi mockups in Figma",
+      "Test — Moderated usability tests with 6 participants via Maze",
+    ],
+    features: [
+      "Mood-based session recommendations powered by a 5-second daily check-in",
+      "Personalized onboarding that adapts to experience level and goals",
+      "Sleep stories library with ambient soundscapes and offline downloads",
+      "Gentle progress tracking — no streaks, just celebrated milestones",
+      "Dark mode with warm tones optimized for evening wind-down",
+      "Accessible design meeting WCAG 2.1 AA standards (contrast, motion, screen reader)",
+    ],
+    outcomes: [
+      "92% task success rate in usability testing",
+      "SUS score of 84 (excellent)",
+      "Reduced average time-to-first-session from 4 min to 45 sec",
+      "Featured in SPIT Design Showcase 2025",
+    ],
+  },
 ];
 
 const ProjectDetail = () => {
@@ -102,6 +137,44 @@ const ProjectDetail = () => {
             <p className="text-foreground/80 leading-relaxed text-lg max-w-3xl">{project.details}</p>
           </motion.div>
 
+          {"problem" in project && (project as any).problem && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid md:grid-cols-2 gap-6"
+            >
+              <div className="border border-subtle p-8">
+                <h2 className="text-xs tracking-[0.3em] text-primary uppercase mb-4">The Problem</h2>
+                <p className="text-foreground/80 leading-relaxed">{(project as any).problem}</p>
+              </div>
+              <div className="border border-primary/30 bg-primary/5 p-8">
+                <h2 className="text-xs tracking-[0.3em] text-primary uppercase mb-4">The Solution</h2>
+                <p className="text-foreground/80 leading-relaxed">{(project as any).solution}</p>
+              </div>
+            </motion.div>
+          )}
+
+          {"process" in project && Array.isArray((project as any).process) && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-xs tracking-[0.3em] text-muted-foreground uppercase mb-6">Design Process</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                {(project as any).process.map((step: string, i: number) => (
+                  <div key={i} className="border border-subtle p-6 flex gap-4">
+                    <span className="text-2xl font-display italic text-primary shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                    <p className="text-foreground/80 leading-relaxed text-sm">{step}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -151,6 +224,24 @@ const ProjectDetail = () => {
               ))}
             </div>
           </motion.div>
+
+          {"outcomes" in project && Array.isArray((project as any).outcomes) && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-xs tracking-[0.3em] text-muted-foreground uppercase mb-6">Outcomes & Impact</h2>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {(project as any).outcomes.map((o: string, i: number) => (
+                  <div key={i} className="border-l-2 border-primary pl-6 py-2">
+                    <p className="text-foreground/80 leading-relaxed">{o}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </div>
       </motion.div>
     </div>
