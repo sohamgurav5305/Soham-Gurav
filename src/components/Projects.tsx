@@ -22,6 +22,16 @@ const projects = [
     tech: ["Python", "Pandas", "NumPy", "XGBoost"],
     year: "2025",
   },
+  {
+    num: "03",
+    tags: "UX • UI • CASE STUDY",
+    slug: "serene-meditation-app",
+    title: "Serene — Meditation App",
+    description: "A complete UX/UI case study for a mindfulness app focused on reducing stress through guided meditations, sleep stories, and mood tracking. Designed in Figma with full user research and prototyping.",
+    highlights: "User Research • Wireframes • High-Fidelity Prototype",
+    tech: ["Figma", "Adobe XD", "Miro", "Maze"],
+    year: "2025",
+  },
 ];
 
 const Projects = () => {
